@@ -1,0 +1,13 @@
+pipeline {
+    options {
+        ansiColor 'xterm'
+        buildDiscarder logRotator(numToKeepStr: '25', artifactNumToKeepStr: '25')
+        timestamps()
+    }
+
+    stage('Deliver') {
+        steps {
+            sh './jenkins/scripts/deliver.sh'
+            }
+    }
+}

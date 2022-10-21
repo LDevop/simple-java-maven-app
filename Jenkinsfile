@@ -21,10 +21,14 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-            }
+        stage('Deliver'){
+        steps {
+            build job: 'simple-java-app-deploy', wait : false
+        }
+        // stage('Deliver') {
+        //     steps {
+        //         sh './jenkins/scripts/deliver.sh'
+        //     }
         }
     }
 }
