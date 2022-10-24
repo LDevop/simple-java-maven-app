@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Copy') {
             steps {
-                sh 'mv target /home/java-app'
+                sh 'mv target /var/lib/jenkins/java-app'
             }
         }
         stage('Deliver') {
