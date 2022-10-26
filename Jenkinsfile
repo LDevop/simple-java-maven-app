@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3.8.1-adoptopenjdk-11'
-            args '-v /root/.m2:/root/.m2'
+            args '-v /root/.m2:/root/.m2 -v /home/jenkins:/home/jenkins'
         }
     }
     stages {
@@ -13,7 +13,9 @@ pipeline {
         }
         stage('Copy') {
             steps {
-                sh 'mv target /var/lib/jenkins/java-app'
+                sh '''
+                    cp target/*.jar /home/jenkins/
+                '''
             }
         }
         stage('Deliver') {
